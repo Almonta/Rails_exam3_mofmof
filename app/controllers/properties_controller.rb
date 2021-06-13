@@ -6,6 +6,7 @@ class PropertiesController < ApplicationController
   end
 
   def show
+    @nearest_stations = @property.nearest_stations
   end
 
   def new
@@ -29,7 +30,7 @@ class PropertiesController < ApplicationController
   end
 
   def update
-    if @property.update(blog_params)
+    if @property.update(property_params)
     redirect_to properties_path
     else
       render :edit
@@ -48,7 +49,8 @@ class PropertiesController < ApplicationController
   end
 
   def property_params
-    params.require(:property).permit(:property_name, :rent, :address, :age, :remarks)
+    params.require(:property).permit(:property_name, :rent, :address, :age, :remarks,
+    nearest_station_attributes: [ :route_name, :station_name, :time, :property_id, :id ])
   end
 
 end

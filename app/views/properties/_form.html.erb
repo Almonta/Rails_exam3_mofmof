@@ -1,5 +1,5 @@
-<%= form_with(model: @property, local: true ,url: choose_new_or_edit) do |form| %>
-  <div class="property_name">
+<%= form_with(model: @property, local: true ) do |form| %>
+  <div class="property">
     <%= form.label :property_name, '物件名' %><br>
     <%= form.text_field :property_name %><br>
     <%= form.label :rent, '賃料' %><br>
@@ -11,25 +11,24 @@
     <%= form.label :remarks, '備考' %><br>
     <%= form.text_area :remarks %><br>
   </div>
-<% end %>
+
   <hr>
 
-<p>最寄り駅1</p>
-<%= form_with(model: @property, local: true ) do |form| %>
-  <div class="property_name">
-    <%= form.label :route_name, '路線名' %><br>
-    <%= form.text_field :route_name %><br>
-    <%= form.label :station_name, '駅名' %><br>
-    <%= form.text_field :station_name %><br>
-    <%= form.label :time, '徒歩分数' %><br>
-    <%= form.text_field :time %><br>
+  <p>最寄り駅1</p>
+  <%= form.fields_for :nearest_stations do |m| %>
+    <div class="nearest_station">
+      <%= m.label :route_name, '路線名' %><br>
+      <%= m.text_field :route_name %><br>
+      <%= m.label :station_name, '駅名' %><br>
+      <%= m.text_field :station_name %><br>
+      <%= m.label :time, '徒歩分数' %><br>
+      <%= m.text_field :time %><br>
 
-  </div>
-  
-  <p>最寄り駅2</p>
-  
-  <%= form.submit '登録する' %>
-  
+    </div>
+    
+    <p>最寄り駅2</p>
+
+    <% end %>
+  <%= form.submit button_text %>
 <% end %>
 
-<%= link_to '戻る', properties_path %>
