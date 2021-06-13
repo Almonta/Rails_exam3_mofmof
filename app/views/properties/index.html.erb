@@ -1,0 +1,13 @@
+
+<% @property.each do |property| %>
+  <p>物件名: <%= property.property_name %></P>
+  <p>賃料: <%= property.rent %></P>
+  <p>住所: <%= property.address %></P>
+  <p>築年数: <%= property.age %></P>
+  <p>備考: <%= property.remarks %></P>
+  <p><%= link_to '詳細' property_path (blog.id) %></P>
+  <p><%= link_to '編集' edit_property_path(blog.id) %></P>
+  <p><%= link_to '削除' method: :delete %></P>
+<% end %>
+
+<%= link_to '物件を登録する', new_property_path %>

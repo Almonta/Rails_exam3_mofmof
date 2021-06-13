@@ -1,0 +1,17 @@
+
+<% @property.each do |property| %>
+  <p>物件名: <%= property.property_name %></P><br>
+  <p>賃料: <%= property.rent %></P><br>
+  <p>住所: <%= property.address %></P><br>
+  <p>築年数: <%= property.age %><p><br>
+  <p>備考: <%= property.remarks %></P>
+<% end %>
+
+  <hr>
+
+<p>最寄り駅1</p>
+<% @nearest_station.each do |station| %>
+  <p>路線名: <%= station.route_name %></P><br>
+  <p>駅名: <%= station.station_name %></P><br>
+  <p>徒歩分: <%= station.time %></P><br>
+<% end %>
