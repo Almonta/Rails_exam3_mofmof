@@ -1,0 +1,35 @@
+
+<div style="line-height: 3rem">
+  <tr>
+    <td>&emsp;物件名: <%= @property.property_name %></td><br>
+    <td>&emsp;賃料: <%= @property.rent %></td><br>
+    <td>&emsp;住所: <%= @property.address %></td><br>
+    <td>&emsp;築年数: <%= @property.age %><td><br>
+    <td>&emsp;備考: <%= @property.remarks %></td>
+  </tr>
+</div>
+
+  <hr>
+
+<% n = 0 %>
+  <% @nearest_stations.each do |station| %>
+    <% if @property.nearest_stations.any? %>
+      <p>最寄り駅<%= n += 1 %></p>
+      <div style="line-height: 3rem">
+        <tr>
+          <td>&emsp;路線名: <%= station.route_name %></td><br>
+          <td>&emsp;駅名: <%= station.station_name %></td><br>
+          <td>&emsp;徒歩分: <%= station.time %></td><br>
+        </tr>
+      </div>
+    <% end %>
+  <% end %>
+
+
+<table>
+  <tr>
+    <td><%= link_to "編集", edit_property_path %></td>
+    <td class="vertical-line"></td>
+    <td><%= link_to "戻る", properties_path %></td>
+  </tr>
+</table>
